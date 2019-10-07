@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>QMC5883 Visualizer</title>
+    <style>
+      html,body{overflow:hidden;width:100%;height:100%;margin:0;padding:0;}
+      #renderCanvas{width:100%;height:100%;touch-action:none;}
+    </style>
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  </head>
+  <body onload="javascript:init()">
+
+    <canvas id="renderCanvas" touch-action="none"></canvas>
+  
+    <script>
+      var Socket, disc;
+      function init() {
+        Socket = new WebSocket('ws://' + window.location.hostname + ':81/');
+        Socket.onmessage = function(event){
+          var data = JSON.parse(event.data);
+          var angle = data["heading"];
+          angle = angle*( Math.PI/180 );
+          console.log(angle);
+          disc.rotation.y = angle;
+        }
+      }
+
+      var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
+      var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+      var createScene = function () {
+            // Create basic scene
+            var scene = new BABYLON.Scene(engine);
+            var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 2, -3), scene);
+            camera.setTarget(BABYLON.Vector3.Zero());
+            camera.attachControl(canvas, false); // ?
+
+        // Add lights to the scene
+          var light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.7;
+            var faceColors = new Array();
+            faceColors[0] = new BABYLON.Color3.Yellow();
+            faceColors[1] = new BABYLON.Color3.Teal();
+            faceColors[2] = new BABYLON.Color3.Purple();
+            var discOptions = {
+              height: 0.1,
+              diameter: 1,
+              //sideOrientation: BABYLON.Mesh.DOUBLESIDE,
+              faceColors: faceColors
+            };
+            disc = BABYLON.MeshBuilder.CreateCylinder("disc", discOptions, scene);
+            disc.position.x = 0;
+            disc.position.y = 1;
+
+            // Create utility layer the gizmo will be rendered on
+            var utilLayer = new BABYLON.UtilityLayerRenderer(scene);
+
+            // Create the gizmo and attach to the disc
+            var gizmo = new BABYLON.PositionGizmo(utilLayer);
+            gizmo.attachedMesh = disc;
+
+            // Keep the gizmo fixed to world rotation
+            gizmo.updateGizmoRotationToMatchAttachedMesh = true;
+            
+            // Tiled Ground
+            // Part 1 : Creation of Tiled Ground
+            // Parameters
+            var xmin = -3, zmin = -3, xmax =  3, zmax =  3;
+            var precision = { "w" : 2, "h" : 2 };
+            var subdivisions = { "w" : 8, "h" : 8 };
+            // Create the Tiled Ground
+            var tiledGround = new BABYLON.Mesh.CreateTiledGround("Tiled Ground", xmin, zmin, xmax, zmax, subdivisions, precision, scene);
+
+            // Create differents materials
+            var whiteMaterial = new BABYLON.StandardMaterial("White", scene);
+            whiteMaterial.diffuseColor = new BABYLON.Color3(1, 1, 1);
+
+            var blackMaterial = new BABYLON.StandardMaterial("Black", scene);
+            blackMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+
+            // Create Multi Material
+            var multimat = new BABYLON.MultiMaterial("multi", scene);
+            multimat.subMaterials.push(whiteMaterial);
+            multimat.subMaterials.push(blackMaterial);
+
+            // Define multimat as material of the tiled ground
+            tiledGround.material = multimat;
+           
+            // Needed variables to set subMeshes
+            var verticesCount = tiledGround.getTotalVertices();
+            var tileIndicesLength = tiledGround.getIndices().length / (subdivisions.w * subdivisions.h);
+            
+            // Set subMeshes of the tiled ground
+            tiledGround.subMeshes = [];
+            var base = 0;
+            for (var row = 0; row < subdivisions.h; row++) {
+                for (var col = 0; col < subdivisions.w; col++) {
+                    tiledGround.subMeshes.push(new BABYLON.SubMesh(row%2 ^ col%2, 0, verticesCount, base , tileIndicesLength, tiledGround));
+                    base += tileIndicesLength;
+                }
+            }
+            return scene;
+      };
+
+      var scene = createScene(); //Call the createScene function
+
+      // Register a render loop to repeatedly render the scene
+      engine.runRenderLoop(function () { 
+          scene.render();
+      });
+
+      // Watch for browser/canvas resize events
+      window.addEventListener("resize", function () { 
+          engine.resize();
+      });
+    </script>
+  </body>
+</html>
