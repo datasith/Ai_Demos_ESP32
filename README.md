@@ -1,4 +1,4 @@
-# Ai_Demos_ESP8266
+# Ai_Demos_ESP32
 
 Example code for using ESP32 Development Boards and various electronic and mechanical components in order to build fun, DIY projects!
 
