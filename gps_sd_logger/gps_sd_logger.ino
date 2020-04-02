@@ -127,7 +127,7 @@ void setup() {
   if(!file) {
     Serial.println("File doens't exist");
     Serial.println("Creating file...");
-    writeFile(SD, "/data.txt", "Reading ID, Date, Hour, Temperature \r\n");
+    writeFile(SD, "/data.txt", "Reading ID, Date, Time of Day, Latitude, Longitude, \r\n");
   }
   else {
     Serial.println("File already exists");  
@@ -137,9 +137,8 @@ void setup() {
   // Enable Timer wake_up
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
 
-  getReadings();
-  delay(2000);
-  getTimeStamp();
+  getReadings();  // from the NEO-6M GPS module
+  getTimeStamp(); // from the NTP server
   logSDCard();
   
   // Increment readingID on every new reading
@@ -155,7 +154,7 @@ void loop() {
   // it never reaches the loop()
 }
 
-// Function to get temperature
+// Function to get the GPS data
 void getReadings(){
   Serial.println("Getting readings...");
   bool newData = false;
