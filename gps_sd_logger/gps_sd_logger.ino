@@ -48,11 +48,11 @@ SoftwareSerial ss(16, 17);
 // Define deep sleep options
 uint64_t uS_TO_S_FACTOR = 1000000;  // Conversion factor for micro seconds to seconds
 // Sleep for 10 minutes = 600 seconds
-uint64_t TIME_TO_SLEEP = 600;
+uint64_t TIME_TO_SLEEP = 5;
 
 // Replace with your network credentials
-const char* ssid     = "YOUR_SSID";
-const char* password = "YOUR_PASSWORD";
+const char* ssid     = "BEARS";
+const char* password = "tenonezero";
 
 // Define CS pin for the SD card module
 #define SD_CS 5
