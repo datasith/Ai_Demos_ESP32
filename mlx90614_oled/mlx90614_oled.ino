@@ -38,6 +38,8 @@
 U8G2_SSD1306_64X48_ER_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 
 // Instantiate an object for the sensor
+// SCL -> GPIO22 (D1 on a D1 Mini)
+// SDA -> GPIO21 (D2 on a D1 Mini)
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 void setup() {
