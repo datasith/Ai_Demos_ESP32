@@ -3,7 +3,7 @@
   Author: Makerbro
   Platforms: ESP32
   Language: C++/Arduino
-  File: vl54l0x_oled.ino
+  File: mlx90614_oled.ino
   ------------------------------------------------------------------------------
   Description:
   Code for YouTube video tutorial demonstrating how to build a temperature
