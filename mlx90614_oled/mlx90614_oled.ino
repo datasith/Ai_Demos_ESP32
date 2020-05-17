@@ -3,7 +3,7 @@
   Author: Makerbro
   Platforms: ESP32
   Language: C++/Arduino
-  File: vl54l0x_oled.ino
+  File: mlx90614_oled.ino
   ------------------------------------------------------------------------------
   Description:
   Code for YouTube video tutorial demonstrating how to build a temperature
@@ -46,16 +46,6 @@ void setup() {
   // Initialize Serial communication for debugging
   Serial.begin(115200);
   Serial.println("MLX90614 Test");
-
-  WiFi.begin(ssid,password);
-  while(WiFi.status()!=WL_CONNECTED)
-  {
-    Serial.print(".");
-    delay(500);
-  }
-  Serial.println("");
-  Serial.print("IP Address: ");
-  Serial.println(WiFi.localIP());
   
   // Initialize the screen
   u8g2.setBusClock(100000);
