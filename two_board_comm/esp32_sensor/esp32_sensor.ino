@@ -48,7 +48,7 @@ bool read_data = false;
 // Declare sensor variables
 Adafruit_BME680 bme; // I2C
 
-// R aw string literal for containing the page to be sent to clients
+// Raw string literal for containing the page to be sent to clients
 char webpage[] PROGMEM = R"=====(
 <html>
 <head>
