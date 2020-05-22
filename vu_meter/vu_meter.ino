@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
   02/11/2020
-  Author: Makerbro
+  Author: Cisco • A C R O B O T I C 
   Platforms: ESP32
   Language: C++/Arduino
   File: vu_meter.ino
@@ -11,15 +11,15 @@
   The audio signal is read from the mic, and a set of LEDs proportional to the 
   amplitude lights up using a wide range of colors:
   https://youtu.be/xvG_kvhBECc
-
-  Do you like my videos? You can support the channel:
+  ------------------------------------------------------------------------------
+  Do you like my work? You can support me:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
+  https://buymeacoff.ee/acrobotic
   ------------------------------------------------------------------------------
-  Please consider buying products from ACROBOTIC to help fund future
-  Open-Source projects like this! We'll always put our best effort in every
-  project, and release all our design files and code for you to use. 
-
+  Please consider buying products and kits to help fund future Open-Source 
+  projects like this! We'll always put our best effort in every project, and 
+  release all our design files and code for you to use. 
   https://acrobotic.com/
   https://amazon.com/shops/acrobotic
   ------------------------------------------------------------------------------

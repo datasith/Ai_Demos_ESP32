@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
   05/10/2020
-  Author: Makerbro
+  Author: Cisco • A C R O B O T I C 
   Platforms: ESP32
   Language: C++/Arduino
   File: File: esp32_sensor.ino
@@ -11,15 +11,15 @@
   data from a BME680 that's connected over I2C. The data is formatted in JSON 
   and broadcasted on the Websocket:
   https://youtu.be/tGR5zqN9M2E  
-
-  Do you like my videos? You can support the channel:
+  ------------------------------------------------------------------------------
+  Do you like my work? You can support me:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
+  https://buymeacoff.ee/acrobotic
   ------------------------------------------------------------------------------
-  Please consider buying products from ACROBOTIC to help fund future
-  Open-Source projects like this! We'll always put our best effort in every
-  project, and release all our design files and code for you to use. 
-
+  Please consider buying products and kits to help fund future Open-Source 
+  projects like this! We'll always put our best effort in every project, and 
+  release all our design files and code for you to use. 
   https://acrobotic.com/
   https://amazon.com/shops/acrobotic
   ------------------------------------------------------------------------------

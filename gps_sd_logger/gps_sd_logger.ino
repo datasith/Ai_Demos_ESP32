@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
   04/01/2020
-  Author: Makerbro
+  Author: Cisco • A C R O B O T I C 
   Platforms: ESP32
   Language: C++/Arduino
   File: gps_sd_logger.ino
@@ -10,23 +10,22 @@
   using an ESP32, a NEO-6M GPS module, and an SD card shield. The ESP32 reads
   data from the sensor, logs it onto the SD card, and then goes into low-power 
   (deep sleep) mode for 10 minutes:
-  https://youtu.be/
-
-  Do you like my videos? You can support the channel:
+  https://youtu.be/pHu2yvsFFgw
+  ------------------------------------------------------------------------------
+  Do you like my work? You can support me:
   https://patreon.com/acrobotic
   https://paypal.me/acrobotic
+  https://buymeacoff.ee/acrobotic
   ------------------------------------------------------------------------------
-  Please consider buying products from ACROBOTIC to help fund future
-  Open-Source projects like this! We'll always put our best effort in every
-  project, and release all our design files and code for you to use. 
-
+  Please consider buying products and kits to help fund future Open-Source 
+  projects like this! We'll always put our best effort in every project, and 
+  release all our design files and code for you to use. 
   https://acrobotic.com/
   https://amazon.com/shops/acrobotic
   ------------------------------------------------------------------------------
   License:
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
-
 // Libraries for NEO-6M GPS module
 #include <TinyGPS.h>
 #include <SoftwareSerial.h>
