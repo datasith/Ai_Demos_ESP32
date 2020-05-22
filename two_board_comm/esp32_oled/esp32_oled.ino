@@ -41,7 +41,7 @@ U8G2_SSD1306_64X48_ER_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 const char* ssid = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
-// Instantiate websocket client objects and parameters
+// Declare websocket client class variable
 WebSocketsClient webSocket;
 
 // Allocate the JSON document
