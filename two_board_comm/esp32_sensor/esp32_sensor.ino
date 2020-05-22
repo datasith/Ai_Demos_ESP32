@@ -71,7 +71,7 @@ char webpage[] PROGMEM = R"=====(
 )=====";
 
 void setup() {
-  // Connect to the server
+  // Connect to WiFi
   WiFi.begin(ssid,password);
   Serial.begin(115200);
   while(WiFi.status() != WL_CONNECTED) {
