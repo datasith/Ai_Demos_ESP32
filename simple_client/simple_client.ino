@@ -34,7 +34,6 @@ const char* host = "postman-echo.com";
 WiFiClient client;
 
 void setup()
-{
   // Connect to WiFi
   WiFi.begin(ssid,password);
   Serial.begin(115200);
@@ -45,7 +44,7 @@ void setup()
   Serial.println();
   Serial.print("IP Address (AP): "); Serial.println(WiFi.localIP());
 
-
+  // Attempt to connect to HTTP client
   if (!client.connect(host, http_port)) {
     Serial.println("Connection failed");
     return;
