@@ -33,9 +33,11 @@
 #include <ArduinoJson.h>
 #include <FastLED.h>
 
+#include "secret.h"
+
 // Initialize network parameters
-const char* ssid = "YOUR_SSID";
-const char* password = "YOUR_PASSWORD";
+const char ssid[] = SECRET_SSID; 
+const char password[] = SECRET_PASS;
 
 // Declare websocket client class variable
 WebSocketsClient webSocket;
@@ -44,10 +46,10 @@ WebSocketsClient webSocket;
 StaticJsonDocument<200> doc;
 
 // Parameters for Twitch channel
-#define TWITCH_OAUTH_TOKEN "YOUR_OAUTH_TOKEN" // per Twitch's API 
-                                              // developer guide: https://twitchapps.com/tmi
-#define TWITCH_NICK "YOUR_CHANNELS_NAME"      // e.g., acrobotik
-#define TWITCH_CHANNEL "#YOUR_CHANNELS_NAME"  // e.g., #acrobotik
+const char twitch_oauth_token[] = "YOUR_OAUTH_TOKEN";
+
+const char twitch_nick[] = "TWITCH_NICK ";    
+const char twitch_channel[] = "TWITCH_CHANNEL";
 
 // Define necessary parameters for controlling the WS2812B LEDs
 #define N_PIXELS  16
@@ -90,9 +92,9 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
     // If the websocket connection is succesful, try to join the IRC server
     case WStype_CONNECTED:
       Serial.printf("[WSc] Connected to: %s\n", payload);
-      webSocket.sendTXT("PASS " + String(TWITCH_OAUTH_TOKEN) + "\r\n");
-      webSocket.sendTXT("NICK " + String(TWITCH_NICK) + "\r\n");
-      webSocket.sendTXT("JOIN " + String(TWITCH_CHANNEL) + "\r\n");
+      webSocket.sendTXT("PASS " + String(twitch_oauth_token) + "\r\n");
+      webSocket.sendTXT("NICK " + String(twitch_nick) + "\r\n");
+      webSocket.sendTXT("JOIN " + String(twitch_channel) + "\r\n");
       break;
     // If we get a response, print it to Serial
     case WStype_TEXT: {
