@@ -46,14 +46,14 @@ WebSocketsClient webSocket;
 StaticJsonDocument<200> doc;
 
 // Parameters for Twitch channel
-const char twitch_oauth_token[] = "YOUR_OAUTH_TOKEN";
+const char twitch_oauth_token[] = TWITCH_OAUTH_TOKEN;
 
-const char twitch_nick[] = "TWITCH_NICK ";    
-const char twitch_channel[] = "TWITCH_CHANNEL";
+const char twitch_nick[] = TWITCH_NICK;    
+const char twitch_channel[] = TWITCH_CHANNEL;
 
 // Define necessary parameters for controlling the WS2812B LEDs
 #define N_PIXELS  16
-#define LED_PIN   19 // labeled "D6" on the board
+#define LED_PIN   0 // labeled "D6" on the board
 #define LED_TYPE  WS2811
 #define BRIGHTNESS  24     // a little dim for recording purposes
 #define COLOR_ORDER GRB
