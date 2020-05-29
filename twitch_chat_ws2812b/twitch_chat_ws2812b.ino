@@ -32,7 +32,6 @@
 #include <WebSocketsClient.h>
 #include <ArduinoJson.h>
 #include <FastLED.h>
-
 #include "secret.h"
 
 // Initialize network parameters
@@ -47,7 +46,6 @@ StaticJsonDocument<200> doc;
 
 // Parameters for Twitch channel
 const char twitch_oauth_token[] = TWITCH_OAUTH_TOKEN;
-
 const char twitch_nick[] = TWITCH_NICK;    
 const char twitch_channel[] = TWITCH_CHANNEL;
 
