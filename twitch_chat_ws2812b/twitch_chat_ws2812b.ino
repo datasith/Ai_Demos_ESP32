@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
   05/21/2020
-  Author: Cisco • A C R O B O T I C 
+  Authors: Cisco • A C R O B O T I C | Edrig
   Platforms: ESP32
   Language: C++/Arduino
   File: twitch_chat_ws2812b.ino
@@ -53,7 +53,7 @@ const char twitch_channel[] = TWITCH_CHANNEL;
 
 // Define necessary parameters for controlling the WS2812B LEDs
 #define N_PIXELS  16
-#define LED_PIN   0 // labeled "D6" on the board
+#define LED_PIN   19       // labeled "D6" on the board
 #define LED_TYPE  WS2811
 #define BRIGHTNESS  24     // a little dim for recording purposes
 #define COLOR_ORDER GRB
