@@ -40,6 +40,8 @@ void setup() {
   // initialize the LED object
   FastLED.addLeds<LED_TYPE,LED_PIN,COLOR_ORDER>(leds,N_PIXELS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
+  FastLED.clear(true);
+  delay(1000);
 }
 
 void loop() {
