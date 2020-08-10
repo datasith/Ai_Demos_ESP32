@@ -28,15 +28,14 @@
   Please see attached LICENSE.txt file for details.
 ------------------------------------------------------------------------------*/
 #include <WiFi.h>
-#include <WebServer.h>
 #include <WebSocketsClient.h>
 #include <ArduinoJson.h>
 #include <FastLED.h>
 #include "secret.h"
 
 // Initialize network parameters
-const char ssid[] = SECRET_SSID; 
-const char password[] = SECRET_PASS;
+const char ssid[] = SSID; 
+const char password[] = PASS;
 
 // Declare websocket client class variable
 WebSocketsClient webSocket;
@@ -56,7 +55,7 @@ const char twitch_channel[] = TWITCH_CHANNEL;
 #define BRIGHTNESS  24     // a little dim for recording purposes
 #define COLOR_ORDER GRB
 
-// declare the LED array
+// Declare the LED array
 CRGB leds[N_PIXELS];
 
 void setup() {
@@ -70,16 +69,16 @@ void setup() {
   Serial.println();
   Serial.print("IP Address: "); Serial.println(WiFi.localIP());
 
-  // server address, port, and URL path
+  // Server address, port, and URL path
   webSocket.begin("irc-ws.chat.twitch.tv", 80, "/");
 
-  // event handler
+  // Event handler
   webSocket.onEvent(webSocketEvent);
 
-  // try ever 5000 again if connection has failed
+  // Try every 5000ms if connection has failed
   webSocket.setReconnectInterval(5000);
 
-  // initialize the FastLED object
+  // Initialize the FastLED object
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, N_PIXELS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
   FastLED.clear(true);
