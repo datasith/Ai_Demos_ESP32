@@ -50,8 +50,8 @@ uint64_t uS_TO_S_FACTOR = 1000000;  // Conversion factor for micro seconds to se
 uint64_t TIME_TO_SLEEP = 5;
 
 // Replace with your network credentials
-const char* ssid     = "BEARS";
-const char* password = "tenonezero";
+const char* ssid     = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
 // Define CS pin for the SD card module
 #define SD_CS 5
